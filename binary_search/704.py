@@ -14,9 +14,12 @@ def search(arr: list[int], val: int) -> int:
         if middle_val == val:
             return m
         elif val > middle_val:
+            if (len(arr) > m+1) and (val == arr[m+1]): return m+1
             return recurse(arr, val, m+1, e, count+1)
-        else:
+        elif val < middle_val:
+            if val == arr[m-1]: return m-1
             return recurse(arr, val, s, m-1, count+1)
+        return -1
 
     return recurse(arr, val, 0, len(arr)-1)
 
@@ -24,3 +27,7 @@ def search(arr: list[int], val: int) -> int:
 assert search([-1,0,3,5,9,12], 3) == 2
 assert search([-1,0,3,5,9,12], 9) == 4
 assert search([-1,0,3,5,9,12], 2) == -1
+assert search([-1,0,3,5,9,12], 13) == -1
+assert search([-1,0,3,5,9,12], 2) == -1
+assert search([], 3) == -1
+assert search([5], 5) == 0
