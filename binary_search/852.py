@@ -9,13 +9,6 @@
 # You must solve it in O(log(arr.length)) time complexity.
 
 
-def get_slope(slice: list[int]) -> int:
-    s, m, e = slice
-    if s > m:
-        return -1
-    if e > m:
-        return 1
-    return 0
 
 def get_peak_index(arr: list[int]) -> int:
     # m - array of ints describing the shape of the mountain 
@@ -25,11 +18,19 @@ def get_peak_index(arr: list[int]) -> int:
         # return [1,2,3]
         return arr[m-1:m+2]
 
+    def get_slope(m: int) -> int:
+        slice = get_slice(m)
+        s, m, e = slice
+        if s > m:
+            return -1
+        if e > m:
+            return 1
+        return 0
+
     def recurse(s: int, e: int) -> int:
         # returns index of mountain peak 
-        m = (e-s) // 2 + s
-        slice = get_slice(m)
-        slope = get_slope(slice)
+        m = (s+e) // 2
+        slope = get_slope(m)
         if slope == 0:
             return m
         elif slope > 0:
