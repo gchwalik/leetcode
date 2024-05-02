@@ -40,7 +40,23 @@ def get_peak_index(arr: list[int]) -> int:
             # mountain falling, so slice to the left
             return recurse(s, m)
 
-    return recurse(0, len(arr)-1)
+    def loop() -> int:
+        s, e = [0, len(arr)-1]
+        m = (e-s) // 2
+        slope = get_slope(m)
+        while slope != 0:
+            if slope > 0:
+                # mountain rising
+                s=m
+            if slope < 0:
+                # mountain fallling
+                e=m
+            m = (s+e) // 2
+            slope = get_slope(m)
+        return m
+
+    return loop()
+    # return recurse(0, len(arr)-1)
 
 
 assert get_peak_index([0,1,0]) == 1
