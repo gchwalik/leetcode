@@ -7,6 +7,8 @@
 # we know that numbers are not consecutive, so we cannot just sum
 def single_number(arr: list[int]) -> int:
     def sets() -> int:
+        # time - O(n)
+        # space - O(n)
         seen = set()
         for n in arr:
             if n not in seen:
