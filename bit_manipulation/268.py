@@ -14,7 +14,9 @@ def missing_num(arr: list[int]) -> int:
         return full ^ actual
 
     def sums() -> int:
-        full = sum(range(len(arr)+1))
+        # full = sum(range(len(arr)+1))
+        n = len(arr)
+        full = n*(n+1)/2
         actual = sum(arr)
         return full - actual
 
