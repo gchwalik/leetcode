@@ -8,8 +8,6 @@
 
 # You must solve it in O(log(arr.length)) time complexity.
 
-
-
 def get_peak_index(arr: list[int]) -> int:
     # m - array of ints describing the shape of the mountain 
     # start and end cannot be the peak 
