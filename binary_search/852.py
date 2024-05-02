@@ -43,16 +43,15 @@ def get_peak_index(arr: list[int]) -> int:
     def loop() -> int:
         s, e = [0, len(arr)-1]
         m = (e-s) // 2
-        slope = get_slope(m)
-        while slope != 0:
-            if slope > 0:
-                # mountain rising
-                s=m
-            if slope < 0:
-                # mountain fallling
+        while arr[m-1] > arr[m] or arr[m+1] > arr[m]:
+            # second case is s<m and e>m, mountain rising
+            if arr[m-1] > arr[m]:
+                # mountain falling
                 e=m
+            if arr[m+1] > arr[m]:
+                # mountain fallling
+                s=m
             m = (s+e) // 2
-            slope = get_slope(m)
         return m
 
     return loop()
