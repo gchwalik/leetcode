@@ -66,9 +66,21 @@ def sum_path_exists(node: Optional[Node], target: int) -> bool:
         # return or because just need one true
         return recurse(node.left, target, curr_sum) or recurse(node.right, target, curr_sum)
 
+    def mark_solution(node: Optional[Node], target: int) -> bool:
+        if not node:
+            return False
+        # if node, node always has val
+        less = target - node.val
+        if node.left is None and node.right is None:
+            if less == 0:
+                return True
+            return False
+        return mark_solution(node.left, less) or mark_solution(node.right, less)
+
     if not node:
         return False
-    return recurse(node, target)
+    # return recurse(node,target)
+    return mark_solution(node, target)
 
 
 assert sum_path_exists(Node(1), 1) == True
