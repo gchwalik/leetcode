@@ -38,7 +38,30 @@ def get_diameter(root: Node) -> int:
 
         return path, width
 
-    return max(dfs(root))
+    def leetcode_solution(root: Optional[Node]) -> int:
+        # this is an optimization of the above logic
+        # its space and time complixity are much less because
+        # i'm keeping track of significantly fewer vars
+        # and this is clever about the implicit logic of the max width
+
+        width = [0]
+        def dfs(node: Optional[Node]) -> tuple[int, int]:
+            # returns:
+            # - longest path from node to leaf
+            # don't stop at leaves, simplifies logic for non childs and leafs
+            if not node:
+                return 0
+
+            left_path = dfs(node.left)
+            right_path = dfs(node.right)
+            width[0] = max(width[0], left_path+right_path)
+            return max(left_path, right_path)+1
+
+        dfs(root)
+        return width[0]
+
+    return leetcode_solution(root)
+    # return max(dfs(root))
 
 
 tree1 = Node(1, 
