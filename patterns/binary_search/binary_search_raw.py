@@ -1,5 +1,3 @@
-
-
 def binary_search(arr: list[int], target: int) -> int:
     # returns index of target, if not found returns -1
     def recurse(low: int, high: int) -> int:
