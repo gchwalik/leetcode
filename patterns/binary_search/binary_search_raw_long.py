@@ -1,5 +1,3 @@
-from math import inf
-
 def binary_search(arr: list[int], target: int) -> int:
     # returns index of target, returns -1 if not found
     def recurse(low: int, high: int) -> int:
@@ -26,6 +24,7 @@ def binary_search(arr: list[int], target: int) -> int:
         return -1
     return recurse(0, len(arr)-1)
 
+assert binary_search(None, 4) == -1
 assert binary_search([],2) == -1
 assert binary_search([1], 2) == -1
 assert binary_search([2],2) == 0
