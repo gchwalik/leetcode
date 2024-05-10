@@ -13,9 +13,25 @@ def binary_search(arr: list[int], target: int) -> int:
         else: # mid_val < target
             return recurse(mid+1, high)
 
+    def loop() -> int:
+        # returns index of target, if target not in arr, returns -1
+        low = 0
+        high = len(arr)-1
+        while low <= high:
+            mid = (low+high) // 2
+            mid_val = arr[mid]
+            if mid_val == target:
+                return mid
+            elif mid_val > target:
+                high = mid - 1
+            else: # mid_val < target
+                low = mid + 1
+        return -1
+
     if not arr:
         return -1 
-    return recurse(0, len(arr)-1)
+    return loop()
+    # return recurse(0, len(arr)-1)
 
 assert binary_search(None, -2) == -1
 assert binary_search([], 3) == -1
