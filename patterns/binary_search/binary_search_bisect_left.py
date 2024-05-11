@@ -6,7 +6,7 @@ def binary_search(arr: list[int], val: int) -> int:
         return -1
 
     i = bisect.bisect_left(arr, val)
-    if i < len(arr) and arr[i] == val:
+    if i != len(arr) and arr[i] == val:
         return i
     return -1
 
