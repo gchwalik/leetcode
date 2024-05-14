@@ -5,14 +5,7 @@
 
 # The length of a path between two nodes is represented by the number of edges between them.
 
-from __future__ import annotations
-from typing import Optional
-
-class Node:
-    def __init__(self, val=0, left=None, right=None):
-        self.val: int = val
-        self.left: Node = left
-        self.right: Node = right
+T
 
 
 def get_diameter(root: Node) -> int:
