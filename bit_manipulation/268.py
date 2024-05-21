@@ -13,6 +13,15 @@ def missing_num(arr: list[int]) -> int:
             full ^= val
         return full ^ actual
 
+    def xor2() -> int:
+        actual = full = 0
+        n = len(arr)
+        for i in range(n):
+            actual ^= arr[i]
+            full ^= i
+        full ^= n
+        return full ^ actual
+
     def sums() -> int:
         # full = sum(range(len(arr)+1))
         n = len(arr)
@@ -20,7 +29,7 @@ def missing_num(arr: list[int]) -> int:
         actual = sum(arr)
         return full - actual
 
-    return sums()
+    return xor2()
 
 def tests() -> None:
     assert missing_num([0]) == 1

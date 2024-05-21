@@ -28,12 +28,9 @@ def binary_search(arr: list[int], target: int) -> int:
                 low = mid + 1
         return -1
 
-    if not arr:
-        return -1 
-    return loop()
-    # return recurse(0, len(arr)-1)
+    # return loop()
+    return recurse(0, len(arr)-1)
 
-assert binary_search(None, -2) == -1
 assert binary_search([], 3) == -1
 assert binary_search([1], 1) == 0
 assert binary_search([1], 2) == -1

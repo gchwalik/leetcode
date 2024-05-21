@@ -30,4 +30,4 @@ def single_number(arr: list[int]) -> int:
 
 assert single_number([1]) == 1
 assert single_number([4,1,2,1,2]) == 4
-assert single_number([2,2,1]) == 1
+assert single_number([2,2,1,3,3]) == 1
