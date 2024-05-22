@@ -23,22 +23,18 @@ class Node:
   
 
 def merge_trees(root1: Node, root2: Node) -> Node:
-    # takes in two trees and merges them returning the root of the new tree
-    def get_val(node: Node) -> int:
-        if node is None:
-            return 0
-        return node.val
-    
-    def recurse(node1: Node, node2: Node) -> Node:
-        sum = get_val(node1) + get_val(node2)
-        new_node = Node(sum)
-        if node1.left or node2.left:
-            new_node.left = recurse(node1.left, node2.left)
-        if node1.right or node2.right:
-            new_node.right = recurse(node1.left, node2.left)
-        return new_node
-    
-    return recurse(root1, root2)
+        # takes in two trees and merges them returning the root of the new tree
+        def recurse(node1: Node, node2: Node) -> Node:
+            if node1 and node2:
+                sum = node1.val + node2.val
+                new_node = Node(sum)
+                new_node.left = recurse(node1.left, node2.left)
+                new_node.right = recurse(node1.right, node2.right)
+                return new_node
+            else: 
+                return node1 or node2
+
+        return recurse(root1, root2)
 
 
 
