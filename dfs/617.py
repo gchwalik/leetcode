@@ -20,7 +20,7 @@ class Node:
     val: int = 0
     left: Node = None
     right: Node = None
-  
+
 
 def merge_trees(root1: Node, root2: Node) -> Node:
         # takes in two trees and merges them returning the root of the new tree
@@ -36,5 +36,6 @@ def merge_trees(root1: Node, root2: Node) -> Node:
 
         return recurse(root1, root2)
 
-
-
+""" Why does this work? This works because once you hit a None node, you don't need to keep passing
+None down the line and reconstructing the branch with new pointers
+"""

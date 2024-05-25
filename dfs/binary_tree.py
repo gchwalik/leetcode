@@ -42,11 +42,3 @@ class Node:
             node.right = right 
             bfs_queue.extend([left,right])
         return root
-    
-tree_lists = [
-    [],
-    [1],
-    [1,2,3,None,None,4,5],
-]
-for l in tree_lists:
-    print(Node.construct_tree(l))
